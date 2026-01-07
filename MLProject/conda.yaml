@@ -1,10 +1,21 @@
-name: mlflow-env
+name: mlops-env
 channels:
   - defaults
 dependencies:
   - python=3.9
+  - scikit-learn
+  - pandas
   - pip
   - pip:
-      - mlflow
-      - scikit-learn
-      - pandas
+<<<<<<< HEAD
+    - mlflow
+=======
+    - mlflow==2.19.0
+    - scikit-learn
+    - pandas
+    - numpy
+    - matplotlib
+    - joblib
+    - dagshub
+    - python-dotenv
+>>>>>>> 2121930c9c1ac069fda7cd2f9482319a26314477
