@@ -20,4 +20,4 @@ jobs:
       run: pip install mlflow scikit-learn pandas
 
     - name: Run MLflow Project
-      run: mlflow run .
+      run: mlflow run MLProject
