@@ -17,13 +17,8 @@ jobs:
         python-version: 3.12
 
     - name: Install dependencies
-      run: |
-       pip install mlflow scikit-learn pandas
-
+      run: pip install mlflow scikit-learn pandas
 
     - name: Run MLflow Project
-  	run: |
-    	mlflow run MLProject \
-      	  --env-manager=local \
-          -P data_path=credit_risk_preprocessing.csv \
-          -P target_column=status
+      run: mlflow run MLProject --env-manager=local -P data_path=credit_risk_preprocessing.csv -P target_column=status
+
