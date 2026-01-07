@@ -4,5 +4,15 @@ conda_env: conda.yaml
 
 entry_points:
   main:
-    command: "python modelling.py"
+    parameters:
+      data_path:
+        type: str
+        default: credit_risk_preprocessing.csv
+      target_column:
+        type: str
+        default: status
+    command: >
+      python modelling.py
+      --data_path {data_path}
+      --target_column {target_column}
 

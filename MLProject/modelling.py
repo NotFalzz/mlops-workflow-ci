@@ -9,6 +9,8 @@ import argparse
 
 # Setup Argument agar bisa dipanggil oleh MLproject
 parser = argparse.ArgumentParser()
+parser.add_argument("--data_path", type=str, default="credit_risk_preprocessing.csv")
+parser.add_argument("--target_column", type=str, default="status")
 parser.add_argument("--n_estimators", type=int, default=100)
 parser.add_argument("--random_state", type=int, default=42)
 args = parser.parse_args()
@@ -17,15 +19,16 @@ args = parser.parse_args()
 with mlflow.start_run():
     # 1. Load Data
     # Pastikan file csv ada di folder yang sama atau sesuaikan path-nya
-    df = pd.read_csv('credit_risk_preprocessing.csv')
+    df = pd.read_csv(args.data_path)
+    
     
     # 2. Preprocessing Sederhana (Contoh: Encode target)
     # Sesuaikan 'status' dengan nama kolom target kamu di CSV
     le = LabelEncoder()
-    df['status'] = le.fit_transform(df['status']) 
+    df[args.target_column] = le.fit_transform(df[args.target_column])
     
-    X = df.drop('status', axis=1)
-    y = df['status']
+    X = df.drop(args.target_column, axis=1)
+    y = df[args.target_column]
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=args.random_state)
 
